@@ -16,6 +16,11 @@ public class Workshop {
     public Workshop() {
     }
 
+    public Workshop(String title, String details) {
+        this.title = title;
+        this.details = details;
+    }
+
     public long getId() {
         return this.id;
     }

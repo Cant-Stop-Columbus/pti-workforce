@@ -1,6 +1,8 @@
 package com.pti.workforce;
 
+import com.pti.workforce.entities.Workshop;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

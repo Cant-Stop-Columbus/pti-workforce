@@ -13,4 +13,10 @@ class WorkshopTest {
         assertEquals(1, workshop.getId());
     }
 
+    @Test
+    public void testSetWorkshopTitle() {
+        Workshop workshop = new Workshop();
+        workshop.setTitle("This Workshop");
+        assertEquals("This Workshop", workshop.getTitle());
+    }
 }

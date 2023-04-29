@@ -4,6 +4,7 @@ public class Workshop {
 
     private int id;
     private String title;
+    private String details;
 
     public Workshop() {
         this.id = id;
@@ -23,5 +24,13 @@ public class Workshop {
 
     public String getTitle() {
         return this.title;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public String getDetails() {
+        return this.details;
     }
 }

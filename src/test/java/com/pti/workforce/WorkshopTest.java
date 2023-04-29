@@ -19,4 +19,13 @@ class WorkshopTest {
         workshop.setTitle("This Workshop");
         assertEquals("This Workshop", workshop.getTitle());
     }
+
+    @Test
+    public void testSetWorkshopInformation() {
+        Workshop workshop = new Workshop();
+        String info = "This is the info for the workshop that is important";
+        workshop.setDetails(info);
+        assertEquals(info, workshop.getDetails());
+
+    }
 }

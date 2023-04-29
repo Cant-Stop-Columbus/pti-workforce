@@ -1,9 +1,16 @@
 package com.pti.workforce.entities;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Workshop {
 
+    @Id
+    @GeneratedValue
     private long id;
     private String title;
+    @Lob
+    @Column(length = 1000000)
     private String details;
 
     public Workshop() {

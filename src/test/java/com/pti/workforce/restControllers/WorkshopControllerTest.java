@@ -38,6 +38,7 @@ class WorkshopControllerTest {
         final String newTitle = "This is the title of the workshop";
         final String newDetails = "This is the details of the workshop";
         final Workshop workshop = new Workshop(newTitle, newDetails);
+        workshop.setId(1);
 
         //Return an empty array of workshops
         mvc.perform(MockMvcRequestBuilders.get("/api/workshops").accept(MediaType.APPLICATION_JSON))
@@ -50,5 +51,19 @@ class WorkshopControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(getJsonContent(workshop)))
                 .andExpect(status().isOk());
+
+        //Check that the new workshop is indeed in the database
+        mvc.perform(MockMvcRequestBuilders.get("/api/workshop/1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        //Delete a workshop from the database
+        mvc.perform(MockMvcRequestBuilders.delete("/api/workshop/" + workshop.getId())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        //Check that the deleted workshop is indeed in gone
+        mvc.perform(MockMvcRequestBuilders.get("/api/workshop/1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+
     }
 }

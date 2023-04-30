@@ -56,6 +56,14 @@ class WorkshopControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/api/workshop/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
+        //Update the content of a workshop
+        workshop.setDetails("These are new details");
+        mvc.perform(MockMvcRequestBuilders.put("/api/workshop/1")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(getJsonContent(workshop)))
+                        .andExpect((status().isOk()));
+
         //Delete a workshop from the database
         mvc.perform(MockMvcRequestBuilders.delete("/api/workshop/" + workshop.getId())
                         .accept(MediaType.APPLICATION_JSON))

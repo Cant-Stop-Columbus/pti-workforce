@@ -43,4 +43,11 @@ public class WorkshopController {
 
         workshopRepository.delete(workshop);
     }
+
+    @PutMapping("/api/workshop/{workshop_id}")
+    public void changeWorkshop(@PathVariable final long workshop_id, final @RequestBody Workshop workshop) throws Exception {
+        if (workshop.getId() != workshop_id)
+            throw new Exception("Workshop has id " + workshop.getId() + " but url had id " + workshop_id);
+        workshopRepository.save(workshop);
+    }
 }
